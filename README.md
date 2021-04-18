@@ -6,7 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 npm install -g @angular/cli
 
+npm install --save-dev @angular-devkit/build-angular
+
 npm install
+
+
 
 ## Extra information
 
