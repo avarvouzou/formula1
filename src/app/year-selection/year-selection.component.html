@@ -1,0 +1,4 @@
+<mat-select value="" (selectionChange)="changeYear($event)">
+  <mat-option value="">Choose your season year</mat-option>
+  <mat-option *ngFor="let year of seasonYears" [value]="year">{{year}}</mat-option>
+</mat-select>
