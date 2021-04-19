@@ -10,7 +10,7 @@ import { Formula1Service } from '../services/formula1.service';
 })
 export class WinnersComponent implements OnInit {
 
-  public Drivers: [];
+  public drivers: [];
 
   constructor(
     private formula1Service: Formula1Service
@@ -24,17 +24,16 @@ export class WinnersComponent implements OnInit {
     let year = '' + e;
     this.formula1Service.perYearDrivers(year).subscribe((resp) => {
 
-      this.Drivers = resp.MRData.StandingsTable.StandingsLists.DriverStandings[0].position.map( data => {
+      this.drivers = resp.map( data => {
         return {
-          position: data.DriverStandings[0].position,
-          points: data.DriverStandings[0].points,
-          driverName: data.DriverStandings[0].Driver.givenName + ' ' + data.DriverStandings[0].Driver.familyName,
-          constructorName: data.DriverStandings[0].Constructors[0].name
+          position: data.position,
+          points: data.points,
+          driverName: data.Driver.givenName + ' ' + data.Driver.familyName,
+          constructorName: data.Constructors[0].name
         }
       })
-      console.log(this.Drivers)
-      // this is wrong because it will return only the first position per year. I was planning to populate the Drivers array with all the positions per year
-      // and then represent it with a table
+      console.log(this.drivers)
+
     })
 
   }

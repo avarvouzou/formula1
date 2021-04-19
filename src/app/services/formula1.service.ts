@@ -22,6 +22,9 @@ export class Formula1Service {
 
   public perYearDrivers(year: string): Observable<any> {
     return this.http.get(`http://ergast.com/api/f1/${year}/driverStandings.json?limit=400&offset=0`)
+    .pipe(
+      map(r => ((r as any).MRData.StandingsTable.StandingsLists[0].DriverStandings))
+    );
   }
 
   public perYearResults(year: string): Observable<any> {
