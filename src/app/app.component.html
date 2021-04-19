@@ -1,12 +1,10 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav mode="side" #sidenav opened position="start" style="font-size: xx-large; text-align: center;">
     Menu
-    <mat-list>
-      <mat-list-item>Results</mat-list-item>
-      <mat-list-item>Winners</mat-list-item>
-      <mat-list-item>Contact info</mat-list-item>
-      <!-- I was planning to put a routerlink in every item on menu for when the user was pressing it,
-      the specific component will be shown -->
+    <mat-list >
+      <mat-list-item><a routerLink="/results" routerLinkActive="active">Results</a></mat-list-item>
+      <mat-list-item><a routerLink="/winners" routerLinkActive="active">Winners</a></mat-list-item>
+      <mat-list-item><a routerLink="/contact" routerLinkActive="active">Contact</a></mat-list-item>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,10 +17,7 @@
       My Account
     </mat-toolbar>
     <div class="main-content">
-      <!--here will be presented one of the components that the user has clicked from the menu, with <router-outlet>  -->
-      <app-contact></app-contact>
-      <app-winners></app-winners>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

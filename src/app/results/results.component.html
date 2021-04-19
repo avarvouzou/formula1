@@ -1,19 +1,32 @@
-<p>results works!</p>
-<!-- I was thinking to represent the data with nested tables if it was possible or with a list inside table or a table inside list
-  it will be populated with an array that will get the data with the http call
+<app-year-selection (onYearChange)="changeYear($event)"></app-year-selection>
+<mat-card *ngFor="let round of rounds">
+  {{round.round}} {{round.date}}{{round.circuit}}
+  <table mat-table [dataSource]="round.results" class="mat-elevation-z8">
 
-  round1      |  date     | circuit information     |
-   pos1     | points      | drivername1     | constructor name
-   pos2     | points      | drivername2     | constructor name
-   pos3     | points      | drivername3     | constructor name
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
 
-   round2      |  date     | circuit information     |
-   pos21     | points      | drivername1     | constructor name
-   pos22     | points      | drivername2     | constructor name
-   pos23     | points      | drivername3     | constructor name
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Points </th>
+      <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+    </ng-container>
 
-   round3      |  date     | circuit information     |
-   pos31     | points      | drivername1     | constructor name
-   pos32     | points      | drivername2     | constructor name
-   pos33     | points      | drivername3     | constructor name
--->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Driver name </th>
+      <td mat-cell *matCellDef="let element"> {{element.driverName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Constructor name </th>
+      <td mat-cell *matCellDef="let element"> {{element.constructorName}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-card>
+<mat-card>Simple card</mat-card>
+<mat-card>Simple card</mat-card>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,13 @@ export class Formula1Service {
     return this.http.get(`http://ergast.com/api/f1/${year}/driverStandings.json?limit=400&offset=0`)
   }
 
-  //another one get()....
+  public perYearResults(year: string): Observable<any> {
+    return this.http
+      .get(`http://ergast.com/api/f1/${year}/results.json?limit=400&offset=0`)
+      .pipe(
+        map(r => ((r as any).MRData.RaceTable.Races))
+      );
+  }
+
+
 }

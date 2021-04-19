@@ -10,8 +10,6 @@ import { Formula1Service } from '../services/formula1.service';
 })
 export class WinnersComponent implements OnInit {
 
-  @Output() onYearChange = new EventEmitter<string>();
-
   public Drivers: [];
 
   constructor(
@@ -23,8 +21,7 @@ export class WinnersComponent implements OnInit {
   }
 
   public changeYear(e: MatSelectChange): void {
-    this.onYearChange.emit(e.value);
-    let year = '' + e; //e was type matselectchange converted to string
+    let year = '' + e;
     this.formula1Service.perYearDrivers(year).subscribe((resp) => {
 
       this.Drivers = resp.MRData.StandingsTable.StandingsLists.DriverStandings[0].position.map( data => {

@@ -24,6 +24,7 @@ import { WinnersComponent } from './winners/winners.component';
 import { ContactComponent } from './contact/contact.component';
 import { YearSelectionComponent } from './year-selection/year-selection.component';
 import { SeasonService } from './services/season.service';
+import { DriverListComponent } from './driver-list/driver-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SeasonService } from './services/season.service';
     ResultsComponent,
     WinnersComponent,
     ContactComponent,
-    YearSelectionComponent
+    YearSelectionComponent,
+    DriverListComponent
   ],
   imports: [
     BrowserModule,
