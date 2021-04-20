@@ -1,25 +1,32 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" #sidenav opened position="start" style="font-size: xx-large; text-align: center;">
-    Menu
-    <mat-list >
-      <mat-list-item><a routerLink="/results" routerLinkActive="active">Results</a></mat-list-item>
-      <mat-list-item><a routerLink="/winners" routerLinkActive="active">Winners</a></mat-list-item>
-      <mat-list-item><a routerLink="/contact" routerLinkActive="active">Contact</a></mat-list-item>
-    </mat-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" style="box-shadow: 0 0 10px rgb(34, 31, 31); height: 100px;">
-      <button mat-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      Formula 1 results application
+<div style="background-color: #595959;">
+  <mat-sidenav-container class="sidebar" fullscreen>
+    <mat-sidenav mode="side" #sidenav opened position="start" style="font-size: xx-large; text-align: center;">
+      <span>Menu</span>
+      <mat-list>
+        <mat-list-item class="list-item" >
+          <a class="underline" routerLink="/results" routerLinkActive="active">Results</a>
+        </mat-list-item>
+        <mat-list-item class="list-item">
+          <a class="underline" routerLink="/winners" routerLinkActive="active">Winners</a>
+        </mat-list-item>
+        <mat-list-item class="list-item">
+          <a class="underline" routerLink="/contact" routerLinkActive="active">Contact</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
 
-    </mat-toolbar>
-    <div class="main-content">
-
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="app-title">
+        <button mat-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        Formula 1 application
+      </mat-toolbar>
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 
 

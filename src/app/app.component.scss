@@ -3,7 +3,7 @@ mat-sidenav {
   padding:15px;
 }
 .mat-drawer {
-  background-color: #023075;
+  background-color: #303030;
   color:#fff
 }
 .main-content {
@@ -16,4 +16,30 @@ mat-sidenav {
 a {
   text-decoration: none;
   color: white;
+  text-align: center;
+}
+
+.app-title {
+  box-shadow: 0 0 10px rgb(34, 31, 31);
+  height: 100px;
+  font-size: xx-large;
+}
+
+.list-item {
+  padding: 40px;
+  font-size: x-large;
+  display: table;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.sidebar {
+  font-family: 'Raleway', sans-serif;
+}
+
+.underline {
+  background-image: linear-gradient(90deg, #d50000, #595959);
+  background-position: bottom;
+  background-size: 100% 30%;
+  background-repeat: no-repeat;
 }

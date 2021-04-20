@@ -1,5 +1,21 @@
-<app-year-selection (onYearChange)="changeYear($event)"></app-year-selection>
-<mat-card *ngFor="let round of rounds">
-  {{round.round}} {{round.date}}{{round.circuit}}
-  <app-driver-list [results]="round.results"></app-driver-list>
-</mat-card>
+<div>
+  <app-year-selection (onYearChange)="changeYear($event)"></app-year-selection>
+  <mat-card *ngFor="let round of rounds" style="margin-top: 40px;">
+    <mat-card-title>
+      <div class="row">
+        <div class="column">
+          <h2>{{round.round}}</h2>
+        </div>
+
+        <div class="column">
+          <h2>{{round.date}}</h2>
+        </div>
+
+        <div class="column" >
+          <h2> {{round.circuit}}</h2>
+        </div>
+      </div>
+    </mat-card-title>
+    <app-driver-list [results]="round.results"></app-driver-list>
+  </mat-card>
+</div>
