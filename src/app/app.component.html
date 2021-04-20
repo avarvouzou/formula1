@@ -8,16 +8,18 @@
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" style="box-shadow: 0 0 10px rgb(34, 31, 31);">
+    <mat-toolbar color="primary" style="box-shadow: 0 0 10px rgb(34, 31, 31); height: 100px;">
       <button mat-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       Formula 1 results application
-      <span class="toolbar-spacer"></span>
-      My Account
+
     </mat-toolbar>
     <div class="main-content">
+
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

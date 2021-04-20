@@ -6,7 +6,7 @@ import { Formula1Service } from '../services/formula1.service';
 @Component({
   selector: 'app-winners',
   templateUrl: './winners.component.html',
-  styleUrls: ['./winners.component.css']
+  styleUrls: ['./winners.component.scss']
 })
 export class WinnersComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { MatSelectChange } from '@angular/material/select';
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+  styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
 
