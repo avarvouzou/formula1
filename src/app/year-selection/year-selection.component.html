@@ -1,4 +1,9 @@
-<mat-select value="" (selectionChange)="changeYear($event)">
-  <mat-option value="">Choose your season year</mat-option>
-  <mat-option *ngFor="let year of seasonYears" [value]="year">{{year}}</mat-option>
-</mat-select>
+<mat-form-field class="select">
+  <mat-select value="" (selectionChange)="changeYear($event)">
+    <mat-option value="">Choose the year</mat-option>
+    <mat-option *ngFor="let year of seasonYears" [value]="year">{{year}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-error *ngIf="!this.connection">Connection issues. Please try later</mat-error>
+
+

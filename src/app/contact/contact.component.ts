@@ -10,12 +10,13 @@ import { Formula1Service } from '../services/formula1.service';
 })
 export class ContactComponent implements OnInit {
 
-  isSubmitted = false;
+  isSubmitted = true;
+  serverError = true;
 
   public Players: any = [];
   public ID: string;
   public contactForm: FormGroup;
-  subscription: Subscription
+  subscription: Subscription;
 
   constructor(
     public fb: FormBuilder,
@@ -24,9 +25,9 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
 
     this.contactForm = this.fb.group({
-      playerID: ['', [Validators.required]],
-      subject: '',
-      message:''
+      playerID: '',
+      subject: new FormControl('',[Validators.required]),
+      message: new FormControl('',[Validators.required])
     })
 
     this.subscription = this.formula1Service.getDrivers().subscribe((userResp) => {
@@ -38,7 +39,7 @@ export class ContactComponent implements OnInit {
         }
       })
 
-    })
+    });
 
   }
 
@@ -52,21 +53,22 @@ export class ContactComponent implements OnInit {
 
    // Getter method to access formcontrols
   get playerName() {
-    return this.contactForm.get('playerName');
+    return this.contactForm.get('givenName');
   }
 
+  submit() {
+    console.log(this.ID)
 
-   submit() {
-     console.log(this.ID)
-     this.isSubmitted = true;
-     if (this.ID = '') {
-       console.log('ok')
-     } else {
-       console.log(this.ID)
-       this.formula1Service.sendMessage(this.ID, this.contactForm).subscribe() //the message from textarea thatr will be connected to the form)
-     }
+    if (this.contactForm.invalid) {
+      this.isSubmitted = false;
+    } else {
+      this.isSubmitted = true;
+      this.formula1Service.sendMessage(this.ID, this.contactForm).subscribe(
+        data => console.log('success', data),
+        error => this.serverError = false //because we do a fake post with a url that does not work, unless we change it will be always false
+      );
+    }
 
-   }
-
+  }
 
 }

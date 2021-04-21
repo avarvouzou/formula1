@@ -5,7 +5,7 @@
       <div style="margin-top: 400px;">
         <mat-form-field class="form-align">
           <mat-label>Choose the player you want to contact</mat-label>
-          <mat-select class="custom-select" (selectionChange)="changePlayer()" formControlName="playerID">
+          <mat-select class="custom-select" (selectionChange)="changePlayer()" formControlName="playerID" required>
             <mat-option *ngFor="let player of Players" [value]="player.driverId">{{player.givenName + ' ' + player.familyName}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -16,28 +16,25 @@
           <div class="form-align">
 
             <div style="width: 100%;" >
-              <mat-label style="font-size: 24px; font-weight: 500;  margin-bottom: 30px;">Write your message</mat-label> <br>
+              <mat-label class="title">Write your message</mat-label> <br>
 
               <mat-form-field class="example-full-width">
                 <mat-label>Subject</mat-label>
-                <input matInput formControlName="subject">
+                <input matInput formControlName="subject" required>
               </mat-form-field>
 
-              <textarea matInput rows="80" cols="100" formControlName="message" class="area-text" formControlName="message"></textarea>
+              <textarea matInput rows="80" cols="100" formControlName="message" class="area-text" formControlName="message" required></textarea>
+
             </div>
 
             <button mat-raised-button color="primary" style="width: 300px; margin-top: 40px;" (click)="submit()">Submit</button>
+            <mat-error *ngIf="!this.isSubmitted">Message not submitted. Required field(s) empty</mat-error>
+            <mat-error *ngIf="!this.serverError">Connection issues. Please try later</mat-error>
 
           </div>
         </mat-card>
       </div>
-
     </form>
-
-
-
-
-
 
   </div>
 </div>

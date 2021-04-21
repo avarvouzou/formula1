@@ -31,7 +31,6 @@
 .overlay {
   background-color: #f0f0f090;
   z-index: 2;
-  /* // box-shadow: 0 0 15px 20px #f0f0f090; */
 }
 
 .center-container {
@@ -67,4 +66,10 @@
   overflow-y: scroll;
   background-color: #878787;
   color: white;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
 }
