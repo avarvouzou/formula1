@@ -15,8 +15,13 @@ export class Formula1Service {
   }
 
   //fake post
-  public sendMessage(id: string, message: string): Observable<any> { //and subject of the message too
-    return this.http.post(`http://ergast.com/api/f1/drivers/${id}`, message)
+  public sendMessage(id: string, message): Observable<any> {
+    const formData = new FormData();
+
+    formData.append('subject', message.subject);
+    formData.append('message', message.message);
+
+    return this.http.post(`http://ergast.com/api/f1/drivers/${id}`, formData)
   }
   //
 

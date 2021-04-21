@@ -1,35 +1,43 @@
 <div class="container overlay-container">
   <div class="center-container" style="margin-top: 100px;">
-    <form [formGroup]="contactForm" style="min-width: 500px; max-width: 800px; width: 100%;">
-      <div style="margin-top: 200px;">
+    <form [formGroup]="contactForm" class="form">
 
-          <mat-select class="custom-select" (selectionChange)="changePlayer()" formControlName="playerName">
-            <mat-option value="">Choose the player you want to contact</mat-option>
+      <div style="margin-top: 400px;">
+        <mat-form-field class="form-align">
+          <mat-label>Choose the player you want to contact</mat-label>
+          <mat-select class="custom-select" (selectionChange)="changePlayer()" formControlName="playerID">
             <mat-option *ngFor="let player of Players" [value]="player.driverId">{{player.givenName + ' ' + player.familyName}}</mat-option>
           </mat-select>
+        </mat-form-field>
       </div>
 
       <div>
-        <!-- One input is missing that will be used for the subject of the message, it will have a formcontrol too -->
-        <mat-card style="margin-top: 30px; max-width: 800px;">
-          <div style="min-width: 500px; max-width: 800px; width: 100%;">
+        <mat-card class="matCard">
+          <div class="form-align">
 
-              <div>
-                  <div style="width: 100%;" >
-                    <mat-label style="font-size: 24px; font-weight: 300;  margin-bottom: 30px; ">Write your message</mat-label>
-                      <textarea matInput rows="80" cols="100" formControlName="message" style="width: 100%; max-height: 200px; overflow-y: scroll;background-color: #878787; color: white;"></textarea>
-                  </div>
-              <br/>
+            <div style="width: 100%;" >
+              <mat-label style="font-size: 24px; font-weight: 500;  margin-bottom: 30px;">Write your message</mat-label> <br>
 
-              <button mat-raised-button color="primary" style="width: 300px;" (click)="submit()">Submit</button>
-              </div>
+              <mat-form-field class="example-full-width">
+                <mat-label>Subject</mat-label>
+                <input matInput formControlName="subject">
+              </mat-form-field>
+
+              <textarea matInput rows="80" cols="100" formControlName="message" class="area-text" formControlName="message"></textarea>
             </div>
+
+            <button mat-raised-button color="primary" style="width: 300px; margin-top: 40px;" (click)="submit()">Submit</button>
+
+          </div>
         </mat-card>
       </div>
-<!-- the form will also have a few validators, one to check if ther area and/or subject is empty when hiting the submit button and one
-to check if the user has choosen any driver, in any case I was thinking about displaying the error before hitting the submit button (with <mat-error>),
- I would disable the button until the criteria will be met -->
+
     </form>
+
+
+
+
+
 
   </div>
 </div>

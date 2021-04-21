@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Formula1Service } from '../services/formula1.service';
 import { MatSelectChange } from '@angular/material/select';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-results',
@@ -14,7 +15,8 @@ export class ResultsComponent implements OnInit {
   public rounds: [];
 
   constructor(
-    private formula1Service: Formula1Service
+    private formula1Service: Formula1Service,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class ResultsComponent implements OnInit {
       this.rounds = resp.map( data => {
         return {
           round: data.round,
-          date: data.date,
+          date: this.datePipe.transform(data.date, 'MMMM d, y'),
           circuit: data.Circuit.circuitName,
           results: data.Results.map(r => {
             return {

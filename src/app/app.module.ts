@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
 
 
 import { ResultsComponent } from './results/results.component';
@@ -52,10 +55,11 @@ import { DriverListComponent } from './driver-list/driver-list.component';
     MatAutocompleteModule,
     MatSelectModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule
 
   ],
-  providers: [SeasonService],
+  providers: [SeasonService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

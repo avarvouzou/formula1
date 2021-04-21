@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Formula1Service } from '../services/formula1.service';
 
 @Component({
@@ -14,44 +15,21 @@ export class ContactComponent implements OnInit {
   public Players: any = [];
   public ID: string;
   public contactForm: FormGroup;
-  mes: string;
-
+  subscription: Subscription
 
   constructor(
     public fb: FormBuilder,
     private formula1Service: Formula1Service ) {}
 
-
-  changePlayer() {
-   this.ID = this.contactForm.get('playerName').value
-  }
-
-  // Getter method to access formcontrols
-  get playerName() {
-    return this.contactForm.get('playerName');
-  }
-
-
-  submit() {
-    console.log(this.ID)
-    this.isSubmitted = true;
-    if (this.ID = '') {
-      console.log('ok')
-    } else {
-      console.log(this.ID)
-      this.formula1Service.sendMessage(this.Players.driverId, this.mes).subscribe() //the message from textarea thatr will be connected to the form)
-    }
-
-  }
-
   ngOnInit() {
 
     this.contactForm = this.fb.group({
-      playerName: ['', [Validators.required]],
-      message: ''
+      playerID: ['', [Validators.required]],
+      subject: '',
+      message:''
     })
 
-    this.formula1Service.getDrivers().subscribe((userResp) => {
+    this.subscription = this.formula1Service.getDrivers().subscribe((userResp) => {
       this.Players = userResp.MRData.DriverTable.Drivers.map(d => {
         return {
           driverId: d.driverId,
@@ -62,8 +40,33 @@ export class ContactComponent implements OnInit {
 
     })
 
-
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe(); //optional we usually don't have memory leaks
+  }
+
+  changePlayer() {
+    this.ID = this.contactForm.get('playerID').value
+  }
+
+   // Getter method to access formcontrols
+  get playerName() {
+    return this.contactForm.get('playerName');
+  }
+
+
+   submit() {
+     console.log(this.ID)
+     this.isSubmitted = true;
+     if (this.ID = '') {
+       console.log('ok')
+     } else {
+       console.log(this.ID)
+       this.formula1Service.sendMessage(this.ID, this.contactForm).subscribe() //the message from textarea thatr will be connected to the form)
+     }
+
+   }
 
 
 }
