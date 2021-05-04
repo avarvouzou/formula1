@@ -1,4 +1,5 @@
 # Formula1Results
+An applicattion that shows the results from Formula 1 races
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
@@ -12,10 +13,6 @@ npm install -g @angular/cli
 
 npm install --save-dev @angular-devkit/build-angular
 
-
-## Extra information
-
-I have left comments inside the code describing the way I would implement the things I wasn't able to do on time
 
 ## Development server
 
